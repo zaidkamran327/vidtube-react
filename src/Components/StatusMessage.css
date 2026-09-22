@@ -1,0 +1,25 @@
+.status-message {
+    padding: 48px 20px;
+    color: #0f0f0f;
+    text-align: center;
+}
+.status-message h2 { margin-bottom: 10px; font-size: 22px; }
+.status-message p { margin-bottom: 20px; color: #606060; font-size: 14px; }
+.status-message a,
+.status-message button {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 0;
+    border-radius: 4px;
+    background: #065fd4;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+}
+.status-actions { display: flex; justify-content: center; gap: 10px; }
+.status-message button { background: #606060; }
+.status-message a:focus-visible,
+.status-message button:focus-visible { outline: 3px solid #80bfff; outline-offset: 2px; }
+body.dark .status-message { color: #fff; }
+body.dark .status-message p { color: #aaa; }

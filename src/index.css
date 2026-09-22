@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #5a5a5a;
+}
+img {
+    cursor: pointer;
+}
+.flex-div {
+    display: flex;
+    align-items: center;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #80bfff;
+    outline-offset: 2px;
+}
+
+/* ── Dark mode ── */
+body.dark {
+    background: #0f0f0f;
+    color: #fff;
+}
+body.dark a { color: #aaa; }
+body.dark nav {
+    background: #212121;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+body.dark .nav-middle .search-box {
+    border-color: #444;
+    background: #121212;
+}
+body.dark .nav-middle .search-box input {
+    color: #fff;
+}
+body.dark .sidebar {
+    background: #212121;
+}
+body.dark .side-links p { color: #eee; }
+body.dark .subscribed-list h3 { color: #aaa; }
+body.dark .sidebar hr { border-color: #444; }
+body.dark .container,
+body.dark .search-container,
+body.dark .large-search-container,
+body.dark .large-container {
+    background: #0f0f0f;
+}
+body.dark .card h2 { color: #fff; }
+body.dark .card h3 { color: #aaa; }
+body.dark .card p  { color: #aaa; }
+body.dark .play-video h3 { color: #fff; }
+body.dark .play-video hr { background: #444; }
+body.dark .publisher div p { color: #fff; }
+body.dark .publisher button.subscribed {
+    background: #444;
+    color: #fff;
+}
+body.dark .publisher button.subscribed:hover { background: #555; }
+body.dark .vid-discription p,
+body.dark .vid-discription h4 { color: #aaa; }
+body.dark .comment h3 { color: #fff; }
+body.dark .comment p  { color: #aaa; }
+body.dark .desc-box {
+    background: #272727;
+}
+body.dark .play-container { background: #0f0f0f; }
+body.dark .search-card-info h3 { color: #fff; }
+body.dark .search-card-info .channel-name,
+body.dark .search-card-info .description,
+body.dark .search-card-info .published { color: #aaa; }
+body.dark .search-results h2 { color: #aaa; }
+body.dark .recommended .vid-info h4 { color: #fff; }
+body.dark .recommended .vid-info p  { color: #aaa; }
+
+/* ── Toast ── */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #333;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+    pointer-events: none;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+body.dark .toast { background: #555; }

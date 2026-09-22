@@ -1,0 +1,88 @@
+.search-container {
+    background: #f9f9f9;
+    min-height: 100vh;
+    padding: 20px 2% 20px 17%;
+}
+
+.large-search-container {
+    padding-left: 7%;
+}
+
+.search-container h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.search-card {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-card:hover h3 {
+    color: #065fd4;
+}
+
+.search-card img {
+    width: 240px;
+    min-width: 240px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.search-card-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #000;
+}
+
+.search-card-info .channel-name {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.search-card-info .published {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.search-card-info .description {
+    font-size: 13px;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.search-status {
+    font-size: 15px;
+    color: #555;
+    padding-top: 20px;
+}
+
+.search-status.error {
+    color: #c00;
+}
+
+@media (max-width: 900px) {
+    .search-container,
+    .large-search-container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .search-card img {
+        width: 160px;
+        min-width: 160px;
+        height: 90px;
+    }
+}

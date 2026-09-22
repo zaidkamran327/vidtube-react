@@ -1,0 +1,288 @@
+nav{
+    padding: 10px 2%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    background: #fff;
+    top: 0;
+    z-index: 10;
+}
+.page-loading-bar {
+    position: fixed;
+    top: 59px;
+    left: 0;
+    z-index: 100;
+    width: 35%;
+    height: 3px;
+    background: #ff0000;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.55);
+    animation: page-loading-progress 0.7s ease-out forwards;
+}
+@keyframes page-loading-progress {
+    from { width: 8%; }
+    to { width: 100%; }
+}
+.nav-left .menu-icon{
+    width: 22px;
+    margin-right: 25px;
+}
+.nav-left .logo{
+    width: 130px;
+}
+.nav-middle .search-box{
+    position: relative;
+    border:  1px solid #ccc;
+    margin-right: 15px;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+.nav-middle .search-box input{
+    width: 400px;
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.nav-middle .search-box img{
+    width: 15px;
+}
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    z-index: 30;
+}
+.search-suggestion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    border: 0;
+    background: #fff;
+    color: #0f0f0f;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+}
+.search-suggestion:hover { background: #f2f2f2; }
+.search-suggestion img {
+    width: 15px;
+    margin: 0;
+    opacity: 0.65;
+}
+.search-suggestion span {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 3px;
+}
+.search-suggestion strong,
+.search-suggestion small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.search-suggestion strong {
+    color: #0f0f0f;
+    font-size: 13px;
+    font-weight: 500;
+}
+.search-suggestion small {
+    color: #606060;
+    font-size: 11px;
+}
+.search-suggestions-loading {
+    padding: 12px 14px;
+    color: #606060;
+    font-size: 13px;
+}
+body.dark .search-suggestions,
+body.dark .search-suggestion { background: #212121; border-color: #444; }
+body.dark .search-suggestion { color: #fff; }
+body.dark .search-suggestion:hover { background: #303030; }
+body.dark .search-suggestion strong { color: #fff; }
+body.dark .search-suggestion small,
+body.dark .search-suggestions-loading { color: #aaa; }
+.nav-right img{
+    width: 25px;
+    margin-right: 25px;
+}
+.nav-right .user-icon{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+.notification-wrapper {
+    position: relative;
+    margin-right: 25px;
+}
+.notification-button {
+    position: relative;
+    display: flex;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.notification-button img {
+    margin-right: 0;
+}
+.notification-count {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: #cc0000;
+    color: #fff;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+}
+.notification-panel {
+    position: absolute;
+    top: 38px;
+    right: -90px;
+    width: 340px;
+    max-height: 430px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+.notification-header h3 {
+    font-size: 16px;
+    color: #0f0f0f;
+}
+.notification-header button {
+    border: 0;
+    background: transparent;
+    color: #065fd4;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 4px 6px;
+}
+.notification-header > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.notification-item {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 15px;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    text-align: left;
+    cursor: pointer;
+}
+.notification-item:hover { background: #f2f2f2; }
+.notification-item img {
+    width: 76px;
+    height: 44px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.notification-item span {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+.notification-item strong {
+    overflow: hidden;
+    color: #0f0f0f;
+    font-size: 13px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.notification-item small { color: #606060; font-size: 12px; }
+.notification-empty { padding: 24px 15px; color: #606060; font-size: 13px; }
+body.dark .notification-panel,
+body.dark .notification-item { background: #212121; border-color: #444; }
+body.dark .notification-header h3,
+body.dark .notification-item strong { color: #fff; }
+body.dark .notification-item:hover { background: #303030; }
+body.dark .notification-item small,
+body.dark .notification-empty { color: #aaa; }
+@media (max-width:900px) {
+    nav {
+        gap: 6px;
+        padding: 8px 3%;
+    }
+    .page-loading-bar { top: 46px; }
+    .nav-left { flex-shrink: 0; }
+    .nav-middle { flex: 1; min-width: 0; margin: 0; }
+    .nav-left .logo { width: 72px; }
+    .nav-middle .search-box {
+        width: 100%;
+        min-width: 0;
+        margin-right: 0;
+        padding: 6px 8px;
+    }
+    .menu-icon{
+        display: none;
+    }
+    .nav-right > img,
+    .notification-button img { display: block; }
+    .nav-right .user-icon{
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-right: 0;
+    }
+    .notification-wrapper { margin-right: 6px; }
+    .notification-panel {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        width: min(340px, calc(100vw - 20px));
+    }
+    .logo{
+        width: 90px;
+    }
+    .nav-middle .search-box input{
+        width: auto;
+        min-width: 0;
+        font-size: 12px;
+    }
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:900px) {
+    .theme-toggle { margin-right: 6px; font-size: 17px; }
+}
+
+body.dark .nav-left .logo {
+    filter: invert(1);
+}
