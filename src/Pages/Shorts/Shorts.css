@@ -219,7 +219,11 @@ body.dark .skeleton-player::after {
         padding-left: 5%;
         padding-right: 5%;
         justify-content: flex-start;
+        overflow-x: hidden;
     }
-    .shorts-player { width: 280px; height: 498px; }
-    .shorts-info { width: 280px; }
+    .shorts-player {
+        width: min(280px, 78vw);
+        height: min(498px, 139vw);
+    }
+    .shorts-info { width: min(280px, 78vw); }
 }

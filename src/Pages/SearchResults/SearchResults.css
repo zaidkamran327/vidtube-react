@@ -81,8 +81,12 @@
     }
 
     .search-card img {
-        width: 160px;
-        min-width: 160px;
+        width: min(160px, 42vw);
+        min-width: 0;
         height: 90px;
+    }
+
+    .search-card-info {
+        min-width: 0;
     }
 }

@@ -6,6 +6,12 @@
     box-sizing: border-box;
     font-family: 'Roboto', Arial, sans-serif;
 }
+html,
+body,
+#root {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 a {
     text-decoration: none;
     color: #5a5a5a;
@@ -35,6 +41,16 @@ body.dark nav {
     background: #212121;
     box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
+body.dark .mobile-search-active {
+    background: #212121;
+}
+body.dark .mobile-search-active .search-box {
+    background: #121212;
+    border-color: #444;
+}
+body.dark .mobile-search-active .search-box input { color: #fff; }
+body.dark .mobile-search-back { color: #fff; }
+body.dark .mobile-search-btn img { filter: invert(1); }
 body.dark .nav-middle .search-box {
     border-color: #444;
     background: #121212;
@@ -45,9 +61,24 @@ body.dark .nav-middle .search-box input {
 body.dark .sidebar {
     background: #212121;
 }
+body.dark .side-links:hover { background: #3a3a3a; }
+body.dark .side-links.active { background: #3a3a3a; }
 body.dark .side-links p { color: #eee; }
-body.dark .subscribed-list h3 { color: #aaa; }
-body.dark .sidebar hr { border-color: #444; }
+body.dark .side-links:hover p,
+body.dark .side-links.active p { color: #fff; }
+body.dark .subscribed-list h3,
+body.dark .saved-links h3 { color: #aaa; }
+body.dark .sidebar hr,
+body.dark .sidebar-hr { background: #444; }
+body.dark .mobile-sidebar-header {
+    background: #212121;
+    border-color: #333;
+}
+body.dark .mobile-sidebar-header .sidebar-logo { filter: invert(1); }
+body.dark .mobile-sidebar-close {
+    background: #333;
+    color: #fff;
+}
 body.dark .container,
 body.dark .search-container,
 body.dark .large-search-container,

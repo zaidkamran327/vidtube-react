@@ -24,6 +24,7 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const [suggestionsOpen, setSuggestionsOpen] = useState(false);
     const [liveSuggestions, setLiveSuggestions] = useState([]);
     const [suggestionsLoading, setSuggestionsLoading] = useState(false);
+    const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
     const navigate = useNavigate();
     const { dark, toggleTheme } = useTheme();
     const { subscriptions } = useSubscriptions();
@@ -156,6 +157,7 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
                 <Link to='/'><img className='logo' src={logo} alt="YouTube Clone home" /></Link>
             </div>
 
+            {/* Desktop search */}
             <div className="nav-middle flex-div">
                 <form className="search-box flex-div" onSubmit={handleSearch}>
                     <input
@@ -163,10 +165,7 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
                         placeholder='Search'
                         value={searchQuery}
                         onFocus={() => setSuggestionsOpen(true)}
-                        onChange={(e) => {
-                            setSearchQuery(e.target.value);
-                            setSuggestionsOpen(true);
-                        }}
+                        onChange={(e) => { setSearchQuery(e.target.value); setSuggestionsOpen(true); }}
                     />
                     <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex' }}>
                         <img src={search_icon} alt="search" />
@@ -175,10 +174,7 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
                         <div className="search-suggestions">
                             {suggestionsLoading && <p className="search-suggestions-loading">Finding suggestions...</p>}
                             {displayedSuggestions.map(suggestion => (
-                                <button
-                                    type="button"
-                                    className="search-suggestion"
-                                    key={suggestion.query}
+                                <button type="button" className="search-suggestion" key={suggestion.query}
                                     onMouseDown={(e) => e.preventDefault()}
                                     onClick={() => submitSearch(suggestion.query)}
                                 >
@@ -195,8 +191,30 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
             </div>
 
             <div className="nav-right flex-div">
-                <button className="theme-toggle" onClick={toggleTheme} title="Toggle dark mode">
-                    {dark ? '☀️' : '🌙'}
+                {/* Mobile search icon — only visible on mobile via CSS */}
+                <button className="mobile-search-btn" onClick={() => setMobileSearchOpen(true)} aria-label="Search">
+                    <img src={search_icon} alt="search" />
+                </button>
+                <button
+                    className={`theme-toggle ${dark ? 'is-dark' : ''}`}
+                    onClick={toggleTheme}
+                    title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+                    aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                    <span className="theme-toggle-track">
+                        <span className="theme-toggle-thumb">
+                            {dark ? (
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20.7 15.2A8.5 8.5 0 0 1 8.8 3.3 8.5 8.5 0 1 0 20.7 15.2Z" />
+                                </svg>
+                            ) : (
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="4" />
+                                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                                </svg>
+                            )}
+                        </span>
+                    </span>
                 </button>
                 <div className="notification-wrapper">
                     <button className="notification-button" onClick={handleNotificationsClick} title="Notifications">
@@ -218,13 +236,8 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
                                 <p className="notification-empty">No new uploads yet.</p>
                             ) : (
                                 notifications.map(notification => (
-                                    <button
-                                        className="notification-item"
-                                        key={notification.id}
-                                        onClick={() => {
-                                            setNotificationsOpen(false);
-                                            navigate(`/video/0/${notification.id}`);
-                                        }}
+                                    <button className="notification-item" key={notification.id}
+                                        onClick={() => { setNotificationsOpen(false); navigate(`/video/0/${notification.id}`); }}
                                     >
                                         <img src={notification.thumbnail} alt="" />
                                         <span>
@@ -241,6 +254,43 @@ const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
                     <img src={profileAvatar} className='user-icon' alt="Profile" />
                 </Link>
             </div>
+
+            {/* Mobile search overlay — only shown when mobileSearchOpen */}
+            {mobileSearchOpen && (
+                <div className="mobile-search-active flex-div">
+                    <button className="mobile-search-back" onClick={() => { setMobileSearchOpen(false); setSearchQuery(''); setSuggestionsOpen(false); }} aria-label="Close search">←</button>
+                    <form className="search-box flex-div" onSubmit={handleSearch} style={{ flex: 1 }}>
+                        <input
+                            type="text"
+                            placeholder='Search YouTube'
+                            value={searchQuery}
+                            autoFocus
+                            onFocus={() => setSuggestionsOpen(true)}
+                            onChange={(e) => { setSearchQuery(e.target.value); setSuggestionsOpen(true); }}
+                        />
+                        <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex' }}>
+                            <img src={search_icon} alt="search" />
+                        </button>
+                        {suggestionsOpen && (displayedSuggestions.length > 0 || suggestionsLoading) && (
+                            <div className="search-suggestions">
+                                {suggestionsLoading && <p className="search-suggestions-loading">Finding suggestions...</p>}
+                                {displayedSuggestions.map(suggestion => (
+                                    <button type="button" className="search-suggestion" key={suggestion.query}
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        onClick={() => { submitSearch(suggestion.query); setMobileSearchOpen(false); }}
+                                    >
+                                        <img src={search_icon} alt="" />
+                                        <span>
+                                            <strong>{suggestion.query}</strong>
+                                            {suggestion.channel && <small>{suggestion.channel}</small>}
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </form>
+                </div>
+            )}
         </nav>
         {pageLoading && <div className="page-loading-bar" aria-label="Loading page" />}
         </>

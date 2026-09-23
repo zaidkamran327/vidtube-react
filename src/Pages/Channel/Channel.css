@@ -145,5 +145,5 @@ body.dark .channel-card p { color: #aaa; }
         height: 60px;
     }
     .channel-header { align-items: flex-start; flex-wrap: wrap; }
-    .channel-subscribe { margin-left: 84px; }
+    .channel-subscribe { margin-left: 0; }
 }
