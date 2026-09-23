@@ -8,7 +8,7 @@ import { handleImageError } from '../../utils/imageFallback';
 import StatusMessage from '../../Components/StatusMessage';
 import './SearchResults.css'
 
-const SearchResults = ({ sidebar }) => {
+const SearchResults = ({ sidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const navigate = useNavigate();
@@ -61,7 +61,13 @@ const SearchResults = ({ sidebar }) => {
 
     return (
         <>
-            <Sidebar sidebar={sidebar} category={null} setCategory={handleCategory} />
+            <Sidebar
+                sidebar={sidebar}
+                category={null}
+                setCategory={handleCategory}
+                mobileSidebarOpen={mobileSidebarOpen}
+                setMobileSidebarOpen={setMobileSidebarOpen}
+            />
             <div className={`search-container ${sidebar ? '' : 'large-search-container'}`}>
                 {content()}
             </div>

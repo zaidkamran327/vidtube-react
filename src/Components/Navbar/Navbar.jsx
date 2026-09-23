@@ -11,7 +11,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { useSubscriptions } from '../../context/SubscriptionContext'
 import { useNotifications } from '../../context/NotificationContext'
 
-const Navbar = ({ setsidebar }) => {
+const Navbar = ({ setsidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [profileAvatar, setProfileAvatar] = useState(() => localStorage.getItem('yt_profile_avatar') || profile_icon);
     const [searchHistory, setSearchHistory] = useState(() => {
@@ -114,6 +114,15 @@ const Navbar = ({ setsidebar }) => {
         if (window.confirm('Clear all notifications?')) clearNotifications();
     };
 
+    const toggleSidebar = () => {
+        if (window.innerWidth <= 900) {
+            setMobileSidebarOpen(prev => !prev);
+            return;
+        }
+
+        setsidebar(prev => !prev);
+    };
+
     const handleSearch = (e) => {
         e.preventDefault();
         submitSearch(searchQuery);
@@ -143,7 +152,7 @@ const Navbar = ({ setsidebar }) => {
         <>
         <nav className='flex-div'>
             <div className='nav-left flex-div'>
-                <img className='menu-icon' onClick={() => setsidebar(prev => !prev)} src={menu_icon} alt="Toggle sidebar" />
+                <img className='menu-icon' onClick={toggleSidebar} src={menu_icon} alt="Toggle sidebar" />
                 <Link to='/'><img className='logo' src={logo} alt="YouTube Clone home" /></Link>
             </div>
 

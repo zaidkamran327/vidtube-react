@@ -3,7 +3,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import { useSaved } from '../../context/SavedContext'
 import './SavedVideos.css'
 
-const SavedVideos = ({ sidebar }) => {
+const SavedVideos = ({ sidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const { type } = useParams();
     const { watchLater, likedVideos } = useSaved();
 
@@ -15,7 +15,13 @@ const SavedVideos = ({ sidebar }) => {
 
     return (
         <>
-            <Sidebar sidebar={sidebar} category={null} setCategory={handleCategory} />
+            <Sidebar
+                sidebar={sidebar}
+                category={null}
+                setCategory={handleCategory}
+                mobileSidebarOpen={mobileSidebarOpen}
+                setMobileSidebarOpen={setMobileSidebarOpen}
+            />
             <div className={`saved-container ${sidebar ? '' : 'large-saved-container'}`}>
                 <h2>{title}</h2>
                 {videos.length === 0 ? (

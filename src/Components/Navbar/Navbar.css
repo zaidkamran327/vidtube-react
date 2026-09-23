@@ -5,7 +5,7 @@ nav{
     position: sticky;
     background: #fff;
     top: 0;
-    z-index: 10;
+    z-index: 30;
 }
 .page-loading-bar {
     position: fixed;
@@ -28,6 +28,8 @@ nav{
 }
 .nav-left .logo{
     width: 130px;
+    position: relative;
+    z-index: 31;
 }
 .nav-middle .search-box{
     position: relative;
@@ -241,8 +243,9 @@ body.dark .notification-empty { color: #aaa; }
         margin-right: 0;
         padding: 6px 8px;
     }
-    .menu-icon{
-        display: none;
+    .menu-icon {
+        display: block;
+        cursor: pointer;
     }
     .nav-right > img,
     .notification-button img { display: block; }

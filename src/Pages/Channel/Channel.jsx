@@ -8,7 +8,7 @@ import StatusMessage from '../../Components/StatusMessage';
 import { handleAvatarError, handleImageError } from '../../utils/imageFallback';
 import { useSubscriptions } from '../../context/SubscriptionContext';
 
-const Channel = ({ sidebar }) => {
+const Channel = ({ sidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const { channelId } = useParams();
     const navigate = useNavigate();
     const { subscribe, unsubscribe, isSubscribed } = useSubscriptions();
@@ -61,7 +61,13 @@ const Channel = ({ sidebar }) => {
 
     return (
         <>
-            <Sidebar sidebar={sidebar} category={null} setCategory={(cat) => navigate(`/?category=${cat}`)} />
+            <Sidebar
+                sidebar={sidebar}
+                category={null}
+                setCategory={(cat) => navigate(`/?category=${cat}`)}
+                mobileSidebarOpen={mobileSidebarOpen}
+                setMobileSidebarOpen={setMobileSidebarOpen}
+            />
             <div className={`channel-container ${sidebar ? '' : 'large-channel-container'}`}>
                 {loading ? (
                     <div className="channel-skeleton" aria-label="Loading channel">

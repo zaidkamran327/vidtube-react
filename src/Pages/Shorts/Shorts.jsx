@@ -12,7 +12,7 @@ const parseDuration = (iso) => {
     return (parseInt(match[1] || 0) * 3600) + (parseInt(match[2] || 0) * 60) + parseInt(match[3] || 0);
 };
 
-const Shorts = ({ sidebar }) => {
+const Shorts = ({ sidebar, mobileSidebarOpen, setMobileSidebarOpen }) => {
     const navigate = useNavigate();
     const [shorts, setShorts] = useState([]);
     const [index, setIndex] = useState(0);
@@ -63,7 +63,13 @@ const Shorts = ({ sidebar }) => {
 
     return (
         <>
-            <Sidebar sidebar={sidebar} category={null} setCategory={(cat) => navigate(`/?category=${cat}`)} />
+            <Sidebar
+                sidebar={sidebar}
+                category={null}
+                setCategory={(cat) => navigate(`/?category=${cat}`)}
+                mobileSidebarOpen={mobileSidebarOpen}
+                setMobileSidebarOpen={setMobileSidebarOpen}
+            />
             <div className={`shorts-container ${sidebar ? '' : 'large-shorts-container'}`}>
                 {loading ? (
                     <div className="shorts-skeleton">
